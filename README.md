@@ -2,6 +2,12 @@
 
 This module creates various pools, policies, a UCS server profile template, and a UCS domain profile. 
 
+This module supports tagging with github
+-  git tag -a v1.1.0 -m "Intersight IaC Enterprise Ops v1.1.0"
+-  git push origin --tags
+- within Module call, versioning can be specified for smoother transitioning to updated modules:
+    source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536-mod?ref=v1.1.0"
+
 This policy bundle creates the following Intersight server pools:
 - IP-pool
 - MAC-pool
