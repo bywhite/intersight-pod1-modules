@@ -89,24 +89,6 @@ variable "vnic_vlan_sets" {
     qos_moid     = string
   }))
   description = "Map of vNic interfaces paired with their vlan range"
-  default = {
-    "eth0"  = {
-      vnic_name   = "eth0"
-      native_vlan = 21
-      vlan_range  = "21,60,254,255"
-      switch_id   = "A"
-      pci_order   = 0
-      qos_moid    = module.imm_pod_qos_mod.vnic_qos_besteffort_moid
-    }
-    "eth1"  = {
-      vnic_name   = "eth1"
-      native_vlan = 21
-      vlan_range  = "21,60,254,255"
-      switch_id   = "B"
-      pci_order   = 1
-      qos_moid    = module.imm_pod_qos_mod.vnic_qos_besteffort_moid
-    }
-  }
 }
 # Usage: for_each var.vnic_vlan_sets  each.value["vnic_name"]  each.value["native_vlan"]  each.value["flan_range"]
 
@@ -124,24 +106,6 @@ variable "vhba_vsan_sets" {
     qos_moid     = string
   }))
   description = "Map of vNic interfaces paired with their vlan range"
-  default = {
-    "fc0" = {
-      vhba_name      = "fc0"
-      vsan_moid      = intersight_vnic_fc_network_policy.fc_vsan_101.moid
-      switch_id      = "A"
-      wwpn_pool_moid = module.imm_pool_mod.wwpn_pool_a_moid
-      pci_order      = 2
-      qos_moid       = module.imm_pod_qos_mod.vnic_qos_fc_moid
-    }
-    "fc1"  = {
-      vhba_name      = "fc1"
-      vsan_moid      = intersight_vnic_fc_network_policy.fc_vsan_102.moid
-      switch_id      = "B"
-      wwpn_pool_moid = module.imm_pool_mod.wwpn_pool_b_moid
-      pci_order      = 3
-      qos_moid       = module.imm_pod_qos_mod.vnic_qos_fc_moid
-    }
-  }
 }
 
 # Usage: for_each var.vhba_vsan_sets  
