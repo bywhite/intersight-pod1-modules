@@ -29,11 +29,6 @@ variable "tags" {
   default     = []
 }
 
-variable "bob" {
-  type        = string
-  description = "prefix for all policies created"
-}
-
 
 # =============================================================================
 # Fabric Interconnect 6536 ports and VLANs
