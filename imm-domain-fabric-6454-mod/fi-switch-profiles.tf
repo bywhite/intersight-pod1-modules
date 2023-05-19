@@ -18,6 +18,10 @@ resource "intersight_fabric_switch_profile" "fi6454_switch_profile_a" {
   switch_cluster_profile {
     moid = intersight_fabric_switch_cluster_profile.fi6454_cluster_profile.moid
   }
+  assigned_switch {
+    object_type = "network.Element"
+    selector    = var.fi_a_sn
+  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -35,6 +39,10 @@ resource "intersight_fabric_switch_profile" "fi6454_switch_profile_b" {
   type        = "instance"
   switch_cluster_profile {
     moid = intersight_fabric_switch_cluster_profile.fi6454_cluster_profile.moid
+  }
+  assigned_switch {
+    object_type = "network.Element"
+    selector    = var.fi_b_sn
   }
   dynamic "tags" {
     for_each = var.tags
