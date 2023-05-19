@@ -20,8 +20,8 @@ resource "intersight_fabric_switch_profile" "fi6454_switch_profile_a" {
   }
   assigned_switch {
     object_type = "network.Element"
-    selector    = "Serial eq FDO244000GQ"
-    #selector    = var.fi_a_sn
+    #selector    = "Serial eq FDO244000GQ"
+    selector    = "Serial eq ${var.fi_a_sn}"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -41,10 +41,10 @@ resource "intersight_fabric_switch_profile" "fi6454_switch_profile_b" {
   switch_cluster_profile {
     moid = intersight_fabric_switch_cluster_profile.fi6454_cluster_profile.moid
   }
-  # assigned_switch {
-  #   object_type = "network.Element"
-  #   selector    = var.fi_b_sn
-  # }
+  assigned_switch {
+    object_type = "network.Element"
+    selector    = "Serial eq ${var.fi_b_sn}"
+  }
   dynamic "tags" {
     for_each = var.tags
     content {
