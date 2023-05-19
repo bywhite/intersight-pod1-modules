@@ -20,7 +20,8 @@ resource "intersight_fabric_switch_profile" "fi6454_switch_profile_a" {
   }
   assigned_switch {
     object_type = "network.Element"
-    selector    = var.fi_a_sn
+    selector    = "FDO244000GQ"
+    #selector    = var.fi_a_sn
   }
   dynamic "tags" {
     for_each = var.tags
