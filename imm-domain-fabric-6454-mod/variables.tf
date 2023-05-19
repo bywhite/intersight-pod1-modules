@@ -29,6 +29,17 @@ variable "tags" {
   default     = []
 }
 
+variable "fi_a_sn" {
+  type        = string
+  description = "FI-A Serial Number for Assignment to Profile"
+  default     = ""
+}
+variable "fi_b_sn" {
+  type        = string
+  description = "FI-B Serial Number for Assignment to Profile"
+  default     = ""
+}
+
 
 # =============================================================================
 # Fabric Interconnect 6454 ports and VLANs
