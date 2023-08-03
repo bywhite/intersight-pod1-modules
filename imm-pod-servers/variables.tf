@@ -119,7 +119,7 @@ variable "vhba_vsan_sets" {
 variable "imc_access_vlan" {
   type        = number
   description = "ID of VLAN for IMC access"
-  default     = 21
+  default     = 10
 }
 variable "server_imc_admin_password" {
   type        = string
