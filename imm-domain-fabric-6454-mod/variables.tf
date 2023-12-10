@@ -23,6 +23,13 @@ variable "description" {
   description = "description field for all policies"
   default     = ""
 }
+
+variable "fi_model" {
+  type        = string
+  description = "Fabric Interconnect Modle"
+  default     = "UCS-FI-6454"
+}
+
 variable "tags" {
   type        = list(map(string))
   description = "user tags to be applied to all policies"

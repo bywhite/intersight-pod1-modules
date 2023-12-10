@@ -21,7 +21,7 @@
 resource "intersight_fabric_port_policy" "fi6454_port_policy_a" {
   name         = "${var.policy_prefix}-fi-a-ports"
   description  = var.description
-  device_model = "UCS-FI-6454"
+  device_model = var.fi_model     #"UCS-FI-6454"
   organization {
     object_type = "organization.Organization"
     moid        = var.organization
