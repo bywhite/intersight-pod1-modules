@@ -9,72 +9,97 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
 # referenced by:  intersight_boot_precision_policy.boot_precision_1[0]
   name                     = "${var.server_policy_prefix}-boot-order-policy-1"
   description              = var.description
-  configured_boot_mode     = "Uefi"
+  # configured_boot_mode     = "Uefi"
+    configured_boot_mode     = "Legacy"
   enforce_uefi_secure_boot = false
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
   }
 
+## Legacy Boot vMedia
+#
   boot_devices {
     enabled     = true
-    name        = "KVM_DVD"
-    object_type = "boot.VirtualMedia"
-     additional_properties = jsonencode({
-       Subtype = "kvm-mapped-dvd"
-    })
-  }
-
-  boot_devices {
-    enabled     = true
-    name        = "IMC_DVD"
+    name        = "NIIODCIMCDVD"
     object_type = "boot.VirtualMedia"
     additional_properties = jsonencode({
       Subtype = "cimc-mapped-dvd"
     })
   }
+  
 
-  boot_devices {
+# Legacy M2 Boot   Options: MRAID, MRAID1, MRAID2, MSTOR-RAID, MSTOR-RAID-1, MSTOR-RAID-2
+    boot_devices {
     enabled     = true
-    name        = "M2_Boot"
+    name        = "M2-RAID"
     object_type = "boot.LocalDisk"
-    additional_properties = jsonencode({
-      Slot    = "MSTOR-RAID"
-      Bootloader = {
-        Description = "M2 Boot"
-        Name        = "BOOTX64.EFI"
-        ObjectType  = "boot.Bootloader"
-        Path        = "\\EFI\\BOOT\\"
-      }
+       additional_properties = jsonencode({
+        slot        = "MRAID"
     })
   }
 
-  boot_devices {
-    enabled     = true
-    name        = "RAID_Boot"
-    object_type = "boot.LocalDisk"
-    additional_properties = jsonencode({
-      Slot       = "MRAID"
-      Bootloader = {
-        Description = "RAID Boot"
-        Name        = "BOOTX64.EFI"
-        ObjectType  = "boot.Bootloader"
-        Path        = "\\EFI\\BOOT\\"
-      }
-    })
-  }
+#  UEFI Boot Type Options
 
-  boot_devices {
-    enabled         = true
-    name            = "PXE"
-    object_type     = "boot.Pxe"
-    additional_properties = jsonencode({
-      Slot            = "MLOM"
-      InterfaceSource = "name"
-      InterfaceName   = "eth0"
-      IpType          = "IPv4"
-    })
-  }
+  # boot_devices {
+  #   enabled     = true
+  #   name        = "KVM_DVD"
+  #   object_type = "boot.VirtualMedia"
+  #    additional_properties = jsonencode({
+  #      Subtype = "kvm-mapped-dvd"
+  #   })
+  # }
+
+  # boot_devices {
+  #   enabled     = true
+  #   name        = "IMC_DVD"
+  #   object_type = "boot.VirtualMedia"
+  #   additional_properties = jsonencode({
+  #     Subtype = "cimc-mapped-dvd"
+  #   })
+  # }
+
+  # boot_devices {
+  #   enabled     = true
+  #   name        = "M2_Boot"
+  #   object_type = "boot.LocalDisk"
+  #   additional_properties = jsonencode({
+  #     Slot    = "MSTOR-RAID"
+  #     Bootloader = {
+  #       Description = "M2 Boot"
+  #       Name        = "BOOTX64.EFI"
+  #       ObjectType  = "boot.Bootloader"
+  #       Path        = "\\EFI\\BOOT\\"
+  #     }
+  #   })
+  # }
+
+  # boot_devices {
+  #   enabled     = true
+  #   name        = "RAID_Boot"
+  #   object_type = "boot.LocalDisk"
+  #   additional_properties = jsonencode({
+  #     Slot       = "MRAID"
+  #     Bootloader = {
+  #       Description = "RAID Boot"
+  #       Name        = "BOOTX64.EFI"
+  #       ObjectType  = "boot.Bootloader"
+  #       Path        = "\\EFI\\BOOT\\"
+  #     }
+  #   })
+  # }
+
+  # boot_devices {
+  #   enabled         = true
+  #   name            = "PXE"
+  #   object_type     = "boot.Pxe"
+  #   additional_properties = jsonencode({
+  #     Slot            = "MLOM"
+  #     InterfaceSource = "name"
+  #     InterfaceName   = "eth0"
+  #     IpType          = "IPv4"
+  #   })
+  # }
 
 #       Port           = "-1"
 #      MacAddress     = ""
@@ -178,24 +203,3 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
 #     })
 #   }
 #
-## Legacy Boot vMedia
-#
-  # boot_devices {
-  #   enabled     = true
-  #   name        = "NIIODCIMCDVD"
-  #   object_type = "boot.VirtualMedia"
-  #   additional_properties = jsonencode({
-  #     Subtype = "cimc-mapped-dvd"
-  #   })
-  # }
-  #
-
-# Legacy M2 Boot
-    # boot_devices {
-  #   enabled     = true
-  #   name        = "M2-RAID"
-  #   object_type = "boot.LocalDisk"
-  #      additional_properties = jsonencode({
-  #       slot        = "MSTOR-RAID"
-  #   })
-  # }
