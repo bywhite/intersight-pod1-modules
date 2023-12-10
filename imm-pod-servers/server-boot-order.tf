@@ -9,9 +9,9 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
 # referenced by:  intersight_boot_precision_policy.boot_precision_1[0]
   name                     = "${var.server_policy_prefix}-boot-order-policy-1"
   description              = var.description
+  configured_boot_mode     = "Legacy"
   # configured_boot_mode     = "Uefi"
-    configured_boot_mode     = "Legacy"
-  enforce_uefi_secure_boot = false
+  # enforce_uefi_secure_boot = false
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
