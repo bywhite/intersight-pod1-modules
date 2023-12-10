@@ -11,7 +11,7 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
   description              = var.description
   configured_boot_mode     = "Legacy"
   # configured_boot_mode     = "Uefi"
-  # enforce_uefi_secure_boot = false
+  enforce_uefi_secure_boot = false
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
@@ -21,10 +21,10 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
 #
   boot_devices {
     enabled     = true
-    name        = "NIIODCIMCDVD"
+    name        = "KVM-DVD"
     object_type = "boot.VirtualMedia"
     additional_properties = jsonencode({
-      Subtype = "cimc-mapped-dvd"
+      Subtype = "kvm-mapped-dvd"
     })
   }
   
@@ -35,7 +35,8 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
     name        = "M2-RAID"
     object_type = "boot.LocalDisk"
        additional_properties = jsonencode({
-        slot        = "MRAID"
+        slot        = "MSTOR-RAID"
+
     })
   }
 
