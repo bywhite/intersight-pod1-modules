@@ -36,12 +36,6 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
     object_type = "boot.LocalDisk"
        additional_properties = jsonencode({
         slot        = "MSTOR-RAID"
-        Bootloader = {
-          Description = "M2 Boot"
-          Name        = "BOOTX64.EFI"
-          ObjectType  = "boot.Bootloader"
-          Path        = "\\EFI\\BOOT\\"
-        }
     })
   }
 
