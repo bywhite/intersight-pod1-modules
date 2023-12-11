@@ -31,12 +31,12 @@ resource "intersight_boot_precision_policy" "boot_precision_1" {
 
 # Legacy M2 Boot   Options: MRAID, MRAID1, MRAID2, MSTOR-RAID, MSTOR-RAID-1, MSTOR-RAID-2
     boot_devices {
-    enabled     = true
-    name        = "M2-RAID"
-    object_type = "boot.LocalDisk"
-       additional_properties = jsonencode({
+      enabled     = true
+      name        = "M2-RAID"
+      object_type = "boot.LocalDisk"
+      additional_properties = jsonencode({
         slot        = "MSTOR-RAID"
-    })
+      })
   }
 
 #  UEFI Boot Type Options
