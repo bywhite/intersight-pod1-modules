@@ -17,6 +17,7 @@ resource "intersight_kvm_policy" "kvmpolicy_1" {
   enable_video_encryption   = true
   enabled                   = true
   maximum_sessions          = 4
+  tunneled_kvm_enabled      = true
   organization {
     moid = var.organization
   }
