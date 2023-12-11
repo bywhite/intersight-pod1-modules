@@ -11,7 +11,7 @@
 resource "intersight_snmp_policy" "server_snmp" {
   name        = "${var.server_policy_prefix}-srv-snmp-policy"
   description              = var.description
-  enabled                 = true
+  enabled                 = false
   snmp_port               = 161
   access_community_string = "anythingbutpublic"
   community_access        = "Disabled"
