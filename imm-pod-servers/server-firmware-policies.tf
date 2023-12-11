@@ -11,12 +11,15 @@ resource "intersight_firmware_policy" "server_firmware_x210c" {
   name        = "${var.server_policy_prefix}-server-firmware-x210c"
   description              = var.description
   target_platform = "FIAttached"
-  
+
   model_bundle_combo {
     bundle_version = "5.2(0.230092)"
     model_family   = "UCSX-210C-M7"
   }
-
+  model_bundle_combo {
+    bundle_version = "5.2(0.230092)"
+    model_family   = "UCSX-210C-M6"
+  }
 
   
   organization {
