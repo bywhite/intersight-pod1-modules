@@ -38,7 +38,7 @@ resource "intersight_vnic_lan_connectivity_policy" "vnic_lan_1" {
   name                = "${var.server_policy_prefix}-lan-connectivity"
   description         = var.description
   iqn_allocation_type = "None"
-  placement_mode      = "auto"
+  placement_mode      = "custom"  #options custom or auto
   target_platform     = "FIAttached"
   organization {
     object_type = "organization.Organization"
